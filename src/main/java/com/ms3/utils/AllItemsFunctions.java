@@ -5,11 +5,12 @@ import com.ms3.models.Item;
 public class AllItemsFunctions {
 
 
-    public String getPrice(Item[][] allItems, int charRowSelection, int columnSelection){
+    public String getPrice(Item[][] allItems, int selectedRow, int columnSelection){
 
-        if(allItems[charRowSelection][columnSelection] == null) return "Empty Slot";
+//      Checks to make sure that selected item is not an empty slot || the amount is not 0
+        if(allItems[selectedRow][columnSelection] == null || allItems[selectedRow][columnSelection].getAmount() == 0) return "Empty Slot";
 
-        return allItems[charRowSelection][columnSelection].getPrice();
+        return allItems[selectedRow][columnSelection].getPrice();
 
     }
 

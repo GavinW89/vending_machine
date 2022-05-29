@@ -27,39 +27,27 @@ public class Json {
         int rows = config.getRows();
         int columns = config.getColumns();
 
-
-        String[][] itemsNameList = new String[rows][columns];
         Item[][] allItems = new Item[rows][columns];
-        String[][] locationLetterList = new String[rows][columns];
-        Integer[][] locationNumberList = new Integer[rows][columns];
-        String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+
         int counter = 0;
         for(int i = 0; i < rows; i++){
             for(int y = 0; y < columns; y++){
-                locationNumberList[i][y] = y;
-                locationLetterList[i][y] = alphabet[i];
+
                 if(counter < jsonInput.getItems().size()){
 
                     if(jsonInput.getItems().get(counter) != null){
-                        String display = jsonInput.getItems().get(counter).getName() + " " + jsonInput.getItems().get(counter).getPrice();
-                        itemsNameList[i][y] = display;
-
 
                         allItems[i][y] = jsonInput.getItems().get(counter);
 
-
                     }
-                }else{
-
-                    itemsNameList[i][y] = "Empty Slot";
                 }
 
                 counter ++;
             }
         }
 
-        printF.insertMoney(jsonInput, columns, rows, itemsNameList, locationLetterList, locationNumberList, allItems);
-        printF.printTable(jsonInput, itemsNameList, locationLetterList, locationNumberList, rows , columns, allItems);
+        printF.insertMoney(jsonInput, columns, rows, allItems);
+        printF.printTable(jsonInput, rows , columns, allItems);
 
     }
 
