@@ -24,13 +24,13 @@ public class PrintF {
 
         // Print jsonInput Objects
 
-
+//      These are formats for the table to be printed
         String leftAlignFormat = " %-27s |";
         String vertSeparator = "%n+----+-----------------------------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+%n";
         String horzSeparator = "  |";
         String numberHeaders = "|    |";
 
-//        Add column headers to a string
+//      Add column headers to a string
         for (int x = 0; x < columns; x++) {
             numberHeaders = numberHeaders  + "                            " + x + "|";
         }
@@ -38,16 +38,18 @@ public class PrintF {
         System.out.format(vertSeparator);
         System.out.format(numberHeaders);
 
-//        Print items with letter locators
+//      Print items with letter locators
 
         boolean locationPrinted = false;
         int counter = 0;
         for (int x = 0; x < rows; x++) {
+//          Test case to make sure we change the boolean back to false each row
             if (locationPrinted) {
                 locationPrinted = false;
             }
             System.out.format(vertSeparator);
             for (int y = 0; y < columns; y++) {
+//              Testing to see if the row letter has been printed. Once it Does print changes boolean to true
                 if (!locationPrinted) {
                     System.out.format("| " + alphabet[x] + horzSeparator);
                     locationPrinted = true;
@@ -87,7 +89,7 @@ public class PrintF {
             int input = scanner.nextInt();
 
             switch (input){
-
+//              Cases for switch, 1-6 will add a certain amount of "money" and 0 will print table.
                 case 1:
                     System.out.println("Added $1 to available cash");
                     money += 1;
@@ -118,12 +120,17 @@ public class PrintF {
                     System.out.print("\nType 1 for $1\nType 2 for $5\nType 3 for $10\nType 4 for 5¢\nType 5 for 10¢\nType 6 for 25¢\nType 0 if you are out of cash\n");
                     break;
                 case 0:
-                    inserting = false;
+                    if(money == 0){
+                        System.out.println("Insert money to continue.");
+                    }else{
+                        inserting = false;
+                    }
+
                     break;
             }
 
         }
-
+//      Once user has purchased an item for the first time, this method will then call upon
         while(purchasedOne){
             printTable(jsonInput, rows, columns, allItems);
         }

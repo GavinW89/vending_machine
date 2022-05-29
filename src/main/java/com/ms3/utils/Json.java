@@ -23,10 +23,11 @@ public class Json {
         fileInputStream.close();
 
         Config config = jsonInput.getConfig();
-        
+
+//      Set ints to Rows and Columns from input.json
         int rows = config.getRows();
         int columns = config.getColumns();
-
+//      Set to all Item objects
         Item[][] allItems = new Item[rows][columns];
 
         int counter = 0;

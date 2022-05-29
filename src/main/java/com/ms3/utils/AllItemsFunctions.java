@@ -17,6 +17,7 @@ public class AllItemsFunctions {
     //    Decrease amount of object
     public void decreaseAmount( int row, int column, Item[][] allItems) {
 
+//      Decreases the amount of the Item by 1
         int getAmount = allItems[row][column].getAmount()-1;
         allItems[row][column].setAmount(getAmount);
 
